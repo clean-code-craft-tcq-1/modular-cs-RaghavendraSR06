@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 
 namespace TelCo.ColorCoder
 {
@@ -15,17 +13,10 @@ namespace TelCo.ColorCoder
         /// Array of minor colors
         /// </summary>
         public static Color[] MapMinor;
-        /// <summary>
-        /// data type defined to hold the two colors of color pair
-        /// </summary>
-        /// 
+       
         internal Color Major;
         internal Color Minor;
-        public override string ToString()
-        {
-            return $"MajorColor:{Major.Name}, MinorColor:{Minor.Name}";
-        }
-
+       
         /// <summary>
         /// Given a pair number function returns the major and minor colors in that order
         /// </summary>
