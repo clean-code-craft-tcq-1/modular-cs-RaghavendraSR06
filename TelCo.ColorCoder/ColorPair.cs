@@ -5,15 +5,10 @@ namespace TelCo.ColorCoder
 {
     public class ColorPair
     {
-        /// <summary>
-        /// Array of Major colors
-        /// </summary>
-        public static Color[] MapMajor;
-        /// <summary>
-        /// Array of minor colors
-        /// </summary>
-        public static Color[] MapMinor;
        
+        public static Color[] MapMajor;
+        public static Color[] MapMinor;
+
         internal Color Major;
         internal Color Minor;
        
@@ -46,6 +41,7 @@ namespace TelCo.ColorCoder
 
             return pair;
         }
+
         /// <summary>
         /// Given the two colors the function returns the pair number corresponding to them
         /// </summary>
@@ -59,8 +55,7 @@ namespace TelCo.ColorCoder
 
             if (majorColorIndex == -1 || minorColorIndex == -1)
             {
-                throw new ArgumentException(
-                    string.Format("Unknown Colors: {0}", pair));
+                throw new ArgumentException($"Unknown Colors: {pair}");
             }
 
             return (majorColorIndex * MapMinor.Length) + (minorColorIndex + 1);
