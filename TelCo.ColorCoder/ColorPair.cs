@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace TelCo.ColorCoder
 {
-    public class ColorPair
+    public partial class ColorPair
     {
        
         public static Color[] MapMajor;
@@ -22,6 +22,7 @@ namespace TelCo.ColorCoder
             // The function supports only 1 based index. Pair numbers valid are from 1 to 25
             int minorSize = MapMinor.Length;
             int majorSize = MapMajor.Length;
+
             if (pairNumber < 1 || pairNumber > minorSize * majorSize)
             {
                 throw new ArgumentOutOfRangeException(
@@ -40,45 +41,6 @@ namespace TelCo.ColorCoder
             };
 
             return pair;
-        }
-
-        /// <summary>
-        /// Given the two colors the function returns the pair number corresponding to them
-        /// </summary>
-        /// <param name="pair">Color pair with major and minor color</param>
-        /// <returns></returns>
-        public static int GetPairNumberFromColor(ColorPair pair)
-        {
-            var majorColorIndex = GetColorIndex(pair.Major, MapMajor);
-
-            var minorColorIndex = GetColorIndex(pair.Minor, MapMinor);
-
-            if (majorColorIndex == -1 || minorColorIndex == -1)
-            {
-                throw new ArgumentException($"Unknown Colors: {pair}");
-            }
-
-            return (majorColorIndex * MapMinor.Length) + (minorColorIndex + 1);
-        }
-
-        /// <summary>
-        /// Get the color index based on colorPair
-        /// </summary>
-        /// <param name="pair">color pair</param>
-        /// <param name="colorMap">color map</param>
-        /// <returns>color index</returns>
-        public static int GetColorIndex(Color pair, Color[] colorMap)
-        {
-            int index = -1;
-            for (int i = 0; i < colorMap.Length; i++)
-            {
-                if (colorMap[i] == pair)
-                {
-                    index = i;
-                    break;
-                }
-            }
-            return index;
         }
     }
 }
