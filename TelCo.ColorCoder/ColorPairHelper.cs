@@ -13,8 +13,10 @@ namespace TelCo.ColorCoder
 
             if (majorColorIndex == -1 || minorColorIndex == -1)
             {
-                throw new ArgumentException($"Unknown Colors: {pair}");
+                throw new ArgumentException(
+                    string.Format("Unknown Colors: {0}", pair.ToString()));
             }
+
 
             return (majorColorIndex * MapMinor.Length) + (minorColorIndex + 1);
         }
