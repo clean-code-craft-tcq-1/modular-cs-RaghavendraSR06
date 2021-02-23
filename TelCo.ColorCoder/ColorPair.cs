@@ -5,18 +5,15 @@ namespace TelCo.ColorCoder
 {
     public partial class ColorPair
     {
-       
-        public static Color[] MapMajor;
-        public static Color[] MapMinor;
 
-        internal Color Major;
-        internal Color Minor;
-       
-        /// <summary>
-        /// Given a pair number function returns the major and minor colors in that order
-        /// </summary>
-        /// <param name="pairNumber">Pair number of the color to be fetched</param>
-        /// <returns></returns>
+        public static Color[] MapMajor, MapMinor;
+        internal Color Major, Minor;
+
+        public override string ToString()
+        {
+            return string.Format("MajorColor:{0}, MinorColor:{1}", Major.Name, Minor.Name);
+        }
+
         public static ColorPair GetColorFromPairNumber(int pairNumber)
         {
             // The function supports only 1 based index. Pair numbers valid are from 1 to 25
@@ -26,7 +23,7 @@ namespace TelCo.ColorCoder
             if (pairNumber < 1 || pairNumber > minorSize * majorSize)
             {
                 throw new ArgumentOutOfRangeException(
-                    $"Argument PairNumber:{pairNumber} is outside the allowed range");
+                    string.Format("Argument PairNumber:{0} is outside the allowed range", pairNumber));
             }
 
             // Find index of major and minor color from pair number
